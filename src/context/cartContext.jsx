@@ -8,8 +8,8 @@ export const CartProvider = ({ children }) => {
   const setItems = () => {
     setAllItems(allProducts);
   };
+
   const addToCart = (item) => {
-    console.log("addToCart,", item);
     setAllItems((prevItems) => {
       return prevItems.map((prevItem) => {
         if (prevItem.inCart) {
@@ -21,8 +21,28 @@ export const CartProvider = ({ children }) => {
       });
     });
   };
+  const removeFromCart = (item) => {
+    setAllItems((prevItems) => {
+      return prevItems.map((prevItem) => {
+        return prevItem.id === item.id
+          ? { ...prevItem, inCart: false, quantity: 1 }
+          : prevItem;
+      });
+    });
+  };
+  const updateQuantiy = (cartItem, count) => {
+    setAllItems((prevItem) => {
+      return prevItem.map((item) => {
+        return item.id == cartItem.id
+          ? { ...item, quantity: item.quantity + count }
+          : item;
+      });
+    });
+  };
   return (
-    <CartContext.Provider value={{ allItems, setItems, addToCart }}>
+    <CartContext.Provider
+      value={{ allItems, setItems, addToCart, removeFromCart, updateQuantiy }}
+    >
       {children}
     </CartContext.Provider>
   );

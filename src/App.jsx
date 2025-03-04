@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { allProducts } from "./assets/utility";
 import CardItem from "./components/CardItem";
 import { useCart } from "./context/cartContext";
 
@@ -17,7 +16,7 @@ const App = () => {
         Trend Alert : Treading Outfit of the Season
       </h1>
       <div className="grid md:grid-cols-3 place-items-start gap-10 m-4">
-        {allProducts?.map((item) => {
+        {allItems?.map((item) => {
           return <CardItem key={item.id} item={item} />;
         })}
       </div>

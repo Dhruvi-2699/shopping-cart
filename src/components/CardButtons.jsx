@@ -2,7 +2,7 @@ import React from "react";
 import { useCart } from "../context/cartContext";
 
 const CardButtons = ({ item }) => {
-  const { addToCart } = useCart();
+  const { addToCart, removeFromCart, updateQuantiy } = useCart();
 
   return (
     <div className="w-max absolute right-5 top-5">
@@ -18,16 +18,37 @@ const CardButtons = ({ item }) => {
         ) : (
           <div>
             <div className="flex">
-              <button className="border rounded-lg px-3">-</button>
+              <button
+                onClick={() => {
+                  if (item.quantity === 1) {
+                    removeFromCart(item);
+                  } else {
+                    updateQuantiy(item, -1);
+                  }
+                }}
+                className="border rounded-lg px-3"
+              >
+                -
+              </button>
               <p className="flex items-center gap-x-1 mx-1">
                 <span className="min-w-7 bg-green-100 grid place-items-center border rounded-full">
-                  1
+                  {item.quantity}
                 </span>
                 <span className="text-xs">in cart</span>
               </p>
-              <button className="border rounded-lg px-3">+</button>
+              <button
+                onClick={() => {
+                  updateQuantiy(item, 1);
+                }}
+                className="border rounded-lg px-3"
+              >
+                +
+              </button>
             </div>
-            <button className="bg-pink-300 mx-auto mt-2 block rounded-md px-2 py-1text-xs text-white hover:bg-pink-400">
+            <button
+              onClick={() => removeFromCart(item)}
+              className="bg-pink-300 mx-auto mt-2 block rounded-md px-2 py-1text-xs text-white hover:bg-pink-400"
+            >
               Remove
             </button>
           </div>
