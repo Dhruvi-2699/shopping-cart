@@ -1,7 +1,7 @@
 import React from "react";
-import CardButtons from "./CardButtons";
+import CartButtons from "./CartButtons";
 
-const CardItem = ({ item }) => {
+const CartItem = ({ item }) => {
   const { id, name, imageUrl, price } = item;
   return (
     <div
@@ -19,9 +19,9 @@ const CardItem = ({ item }) => {
         <h1 className="text-zinc-700 text-sm">{name}</h1>
         <span className="text-pink-400 text-sm">${price}</span>
       </div>
-      <CardButtons item={item} />
+      <CartButtons item={item} />
     </div>
   );
 };
 
-export default CardItem;
+export default CartItem;

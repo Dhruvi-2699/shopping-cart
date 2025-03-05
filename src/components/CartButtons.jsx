@@ -1,7 +1,7 @@
 import React from "react";
 import { useCart } from "../context/cartContext";
 
-const CardButtons = ({ item }) => {
+const CartButtons = ({ item }) => {
   const { addToCart, removeFromCart, updateQuantiy } = useCart();
 
   return (
@@ -58,4 +58,4 @@ const CardButtons = ({ item }) => {
   );
 };
 
-export default CardButtons;
+export default CartButtons;
