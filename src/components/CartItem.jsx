@@ -20,7 +20,7 @@ const CartItem = ({ item, fromCart }) => {
       <div className="absolute bottom-5 left-5">
         <h1 className={`text-zinc-700 ${fromCart && "text-sm"}`}>{name}</h1>
         <span className={`text-pink-400 ${fromCart && "text-sm"}`}>
-          ${price}
+          ${price} Hello cart item
         </span>
       </div>
       <CartButtons item={item} fromCart={fromCart} />
